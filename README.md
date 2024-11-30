@@ -68,15 +68,15 @@ I adopted the Gherkin syntax for writing test cases, embracing Behavior-Driven D
 
 **1. Creating a Public Board via the Create Button**
 
-	* After logging in to Trello, I created a board with public visibility using the Create button at the top of the page.
+* After logging in to Trello, I created a board with public visibility using the Create button at the top of the page.
 
-	* Verified that the board name appears in the left-hand list.
+* Verified that the board name appears in the left-hand list.
 
-	* Added three lists to the board, handling the creation logic differently depending on whether it's the first board (due to Trello's behavior).
+* Added three lists to the board, handling the creation logic differently depending on whether it's the first board (due to Trello's behavior).
 
-	* Added a sample card to the first list.
+* Added a sample card to the first list.
 
-		* Challenge: The list data wasn't immediately available on the page after creation due to the high speed of the Playwright. While this issue may not be serious, it could potentially affect some users. Instead of using a sleep method, I refreshed the page to ensure the data was synchronized before adding the card.
+	* Challenge: The list data wasn't immediately available on the page after creation due to the high speed of the Playwright. While this issue may not be serious, it could potentially affect some users. Instead of using a sleep method, I refreshed the page to ensure the data was synchronized before adding the card.
 
 **2. Creating a Workspace Board via the (+) Icon**
 
