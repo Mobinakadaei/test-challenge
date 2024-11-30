@@ -80,14 +80,14 @@ I adopted the Gherkin syntax for writing test cases, embracing Behavior-Driven D
 
 **2. Creating a Workspace Board via the (+) Icon**
 
-	* Created a board using the (+) icon, setting the visibility to Workspace to test a different visibility option.
+* Created a board using the (+) icon, setting the visibility to Workspace to test a different visibility option.
 
-	* Followed the same steps as in the first test to validate that the workspace board behaves identically.
+* Followed the same steps as in the first test to validate that the workspace board behaves identically.
 
 **Post-Test Cleanup**
 
-	* Deleted all boards created during the tests.
-	* Closed the browser after each test case to ensure proper isolation and cleanup.
+* Deleted all boards created during the tests.
+* Closed the browser after each test case to ensure proper isolation and cleanup.
 
 This approach validates board creation functionality from different entry points while maintaining robust error handling and clean testing practices.
 
