@@ -4,26 +4,50 @@
 
 Before running the tests, ensure that you have the following installed:
 
-- Python (version 3.x)
-- pip (Python package manager)
-- Robot Framework
-- Playwright libraries for browser automation (Which is Browser Library in Robot Framework)
+## Python (version 3.x):
 
-You can install the required libraries by running the following commands:
+   **- For Mac:**
+   ```sh
+   brew install python
+   ```
 
+   **- For Windows:**
+   ```sh
+   winget install --id Python.Python.3
+   ```
+
+## pip (Python package manager):
+
+   **Open a terminal and run:**
+   ```sh
+   curl -O https://bootstrap.pypa.io/get-pip.py
+   ```
+
+   **- For Windows Run:**
+   ```sh
+   python get-pip.py
+   ```
+
+   **- For Mac run:**
+   ```sh
+   python3 get-pip.py
+   ```
+
+To install Robot Framework and Playwright libraries, follow these steps:
 
 **Installation Guide**
 
 Follow these steps to set up the project on your machine:
 
-## 1. Clone the Repository:
+## 1. Install Dependencies:
+    pip3 install robotframework
+    pip3 install robotframework-browser
+    rfbrowser init 
 
-    git clone https://github.com/kadaeimobina/TestAutomation.git
-    cd TestAutomation
+## 2. Clone the Repository:
 
-## 2. Install Dependencies:
-    pip install robotframework
-    pip install robotframework-browser
+    git clone https://github.com/Mobinakadaei/test-challenge.git
+    cd test_automation/test_case
 
 ## 3. Running the Tests (For UI Testing):
 
@@ -33,12 +57,49 @@ Follow these steps to set up the project on your machine:
 
 ## Test Approach
 
-The UI test cases for this project are located in the TestCase/TestCase.robot folder and will be executed according to the installation steps outlined earlier. I have implemented the Page Object Model (POM) design pattern in combination with Playwright for interacting with web elements in Robot Framework. This approach involves creating dedicated keyword files for each web page, encapsulating the logic for element interactions separately. By structuring the tests in this way, the code is not only more maintainable but also reusable and scalable, as it clearly separates the page-specific actions from the actual test cases. This organization enhances the overall test suite by improving clarity, reducing duplication, and simplifying future updates or expansions.
+The UI test cases for this project are located in the test_automation/test_case/TestCase.robot folder and will be executed according to the installation steps outlined earlier. I have implemented the Page Object Model (POM) design pattern in combination with Playwright for interacting with web elements in Robot Framework. This approach involves creating dedicated keyword files for each web page, encapsulating the logic for element interactions separately. By structuring the tests in this way, the code is not only more maintainable but also reusable and scalable, as it clearly separates the page-specific actions from the actual test cases. This organization enhances the overall test suite by improving clarity, reducing duplication, and simplifying future updates or expansions.
 
 Keywords for interacting with each web page's elements are organized within separate files in the pageObjectModel directory. This modular structure ensures that main keywords and variables are defined and detailed within dedicated files, while the test case files focus solely on test case definitions, without embedding logic or variables. Additionally, if any variables need to be changed, they can be modified in a single, dedicated file for each page object, simplifying updates and maintenance. This separation leads to cleaner, easier-to-read, and more manageable test scripts.
 
-I also adopted the Gherkin syntax for writing test cases, as it serves as a common language between QA, developers, and product teams. This approach ensures that all team members, regardless of their role, can easily understand the test cases, fostering better collaboration and communication throughout the development process.
 
+I adopted the Gherkin syntax for writing test cases, embracing Behavior-Driven Development (BDD) to foster collaboration. This approach bridges the gap between technical and non-technical stakeholders by providing a common language, ensuring QA, developers, and product teams can easily understand and align on requirements.
+
+## Test Implementation
+
+**1. Creating a Public Board via the Create Button**
+
+	* After logging in to Trello, I created a board with public visibility using the Create button at the top of the page.
+
+	* Verified that the board name appears in the left-hand list.
+
+	* Added three lists to the board, handling the creation logic differently depending on whether it's the first board (due to Trello's behavior).
+
+	* Added a sample card to the first list.
+
+		* Challenge: The list data wasn't immediately available on the page after creation due to the high speed of the Playwright. While this issue may not be serious, it could potentially affect some users. Instead of using a sleep method, I refreshed the page to ensure the data was synchronized before adding the card.
+
+**2. Creating a Workspace Board via the (+) Icon**
+
+	* Created a board using the (+) icon, setting the visibility to Workspace to test a different visibility option.
+
+	* Followed the same steps as in the first test to validate that the workspace board behaves identically.
+
+**Post-Test Cleanup**
+
+	* Deleted all boards created during the tests.
+	* Closed the browser after each test case to ensure proper isolation and cleanup.
+
+This approach validates board creation functionality from different entry points while maintaining robust error handling and clean testing practices.
+
+## Test Improvements
+
+- Adding more scenarios for failure testing, such as different network scenarios.
+
+- Writing API tests
+
+- Including additional test scenarios to achieve better test coverage.
+
+- Testing Across Different Browsers: Ensuring compatibility and consistent behavior by running tests on various browsers (e.g., Chrome, Firefox, Safari, Edge).
 
 Here's an overview of how I implemented this approach:
 
